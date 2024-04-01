@@ -2,29 +2,36 @@ package org.example;
 
 public class List {
 
-  private static class Node{
+  private Node head;
+  private Integer size;
+
+  public List(){
+    head = null;
+    size = 0;
+  }
+
+  public void addElem(Integer elem, Integer index){
+    if(size == 0){
+      head = new Node(elem,null);
+    }else{
+      if(index == 0)
+        head = new Node(elem,head);
+      else{
+        Node ptr = head;
+        for(int i =0;i<Math.min(size,index)-1;++i)
+          ptr = ptr.next;
+      }
+    }
+  }
+
+
+  private class Node{
     private Integer data;
     private Node next;
 
     public Node(Integer num, Node next) {
       this.data = num;
       this.next = next;
-    }
-
-    public void setData(Integer data) {
-      this.data = data;
-    }
-
-    public int getData() {
-      return data;
-    }
-
-    public Node getNextElem() {
-      return next;
-    }
-
-    public void setNextElem(Node nextElem) {
-      this.next = nextElem;
     }
   }
 }
