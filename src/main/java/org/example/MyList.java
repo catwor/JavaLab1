@@ -2,7 +2,6 @@ package org.example;
 
 /**
  * @author Тетюхин Иван
- * <p>
  * Односвязный список
  */
 public class MyList {
@@ -115,22 +114,34 @@ public class MyList {
     }
   }
 
+  /**
+   * преобразование списка в строку
+   * @return строка состоящая из элементов списка
+   */
   @Override
   public String toString(){
     String listString = "";
     Node ptr = head;
 
     for(int i=0;i<size;++i){
-      listString +=ptr.data + " ";
-      ptr = ptr.next;
+      listString +=ptr.getData() + " ";
+      ptr = ptr.getNext();
     }
 
     return listString;
   }
+  /**
+   * @author Тетюхин Иван
+   * Узел односвязного списка
+   */
   private class Node{
     private Integer data;
     private Node next;
-
+    /**
+     * конструктор по умолчанию
+     * @param num значение, которое хранится в узле
+     * @param next следующий узел
+     */
     public Node(Integer num, Node next) {
       this.data = num;
       this.next = next;
